@@ -5,8 +5,8 @@
     <script src="../../lib/jquery-3.4.1.min.js"></script>
     <script src="../../lib/jquery-migrate-1.2.1.min.js"></script>
 
-    <link rel="stylesheet" href="/assets/bootstrap.min.css"/>
-    <link href="/assets/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap.min.css"/>
+    <link href="assets/font-awesome.min.css" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 
@@ -182,7 +182,7 @@
                     editIconSize : 'large'
                 }
 			},
-            defaultImageUrl: '/examples/redactor/images/drawer.jpg',
+            defaultImageUrl: '../../examples/redactor/images/drawer.jpg',
             defaultActivePlugin : { name : 'Pencil', mode : 'lastUsed'},
             debug: true,
 			transparentBackground: true,
@@ -192,6 +192,7 @@
 
         $('#canvas-editor').append(window.drawer.getHtml());
         window.drawer.onInsert();
+        $('#canvas-editor').trigger('click');
     });
 </script>
 </body>
