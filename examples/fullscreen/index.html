@@ -187,12 +187,14 @@
             debug: true,
 			transparentBackground: true,
             align: 'floating',  //one of 'left', 'right', 'center', 'inline', 'floating'
-			lineAngleTooltip: { enabled: true, color: 'blue',  fontSize: 15}
+			lineAngleTooltip: { enabled: true, color: 'blue',  fontSize: 15},
+            exitOnOutsideClick: false,
         });
 
         $('#canvas-editor').append(window.drawer.getHtml());
         window.drawer.onInsert();
-        $('#canvas-editor').trigger('click');
+        window.drawer.api.startEditing();
+        //$('#canvas-editor').find('img').trigger('click');
     });
 </script>
 </body>

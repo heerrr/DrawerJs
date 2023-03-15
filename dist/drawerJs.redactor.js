@@ -31157,6 +31157,7 @@ DrawerJs.texts = {
         arrowSize = arrowSize * (this.get('strokeWidth') / 2);
       }
 
+
       var arrowPointOffsetX = 10;
       var arrowPointOffsetY = 20;
 
@@ -47425,6 +47426,7 @@ CloseButton.prototype._onCloseButtonClick = function() {
     var arrow = new fabric.ErasableArrow([left, top, left + 1, top + 1], {
       oneSided: true
     });
+
     arrow.set('strokeWidth', this.drawerInstance.lineStrokeWidth || 1);
     arrow.set('stroke', this.drawerInstance.activeColor);
     arrow.set('opacity', this.drawerInstance.activeOpacity);

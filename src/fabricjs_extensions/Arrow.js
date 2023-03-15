@@ -65,6 +65,7 @@
         arrowSize = arrowSize * (this.get('strokeWidth') / 2);
       }
 
+
       var arrowPointOffsetX = 10;
       var arrowPointOffsetY = 20;
 

@@ -72,6 +72,7 @@
     var arrow = new fabric.ErasableArrow([left, top, left + 1, top + 1], {
       oneSided: true
     });
+
     arrow.set('strokeWidth', this.drawerInstance.lineStrokeWidth || 1);
     arrow.set('stroke', this.drawerInstance.activeColor);
     arrow.set('opacity', this.drawerInstance.activeOpacity);

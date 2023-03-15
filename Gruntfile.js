@@ -1,5 +1,31 @@
-module.exports = function (grunt) {
+var os = require("os");
 
+module.exports = function (grunt) {
+  var platform = process.platform;
+
+  // Attempt to detect Windows Subystem for Linux (WSL). WSL  itself as Linux (which works in most cases), but in
+  // this specific case we need to treat it as actually being Windows. The "Windows-way" of opening things through
+  // cmd.exe works just fine here, whereas using xdg-open does not, since there is no X Windows in WSL.
+  if (platform === "linux" && os.release().indexOf("Microsoft") !== -1) {
+      platform = "win32";
+  }
+
+  // http://stackoverflow.com/q/1480971/3191, but see below for Windows.
+  var commandDev;
+  switch (platform) {
+      case "win32": {
+          commandDev = "Chrome";
+          break;
+      }
+      case "darwin": {
+          commandDev= "open";
+          break;
+      }
+      default: {
+          commandDev = "xdg-open";
+          break;
+      }
+  }
   var libraries = [
     'lib/fabric.1.7.1.js'
   ];
@@ -62,7 +88,7 @@ module.exports = function (grunt) {
     open : {
       dev : {
         path: 'http://localhost:8081/examples',
-        app: 'xdg-open'
+        app: commandDev
       }
     },
  	copy: {
