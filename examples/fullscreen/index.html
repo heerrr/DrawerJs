@@ -180,7 +180,13 @@
                 Text : {
                     editIconMode : true,
                     editIconSize : 'large'
-                }
+                },
+                Pencil : {
+                    brushSize:20,
+                },
+                ArrowOneSide: {
+                    lineStrokeWidth:20,
+                },
 			},
             defaultImageUrl: '../../examples/redactor/images/drawer.jpg',
             defaultActivePlugin : { name : 'Pencil', mode : 'lastUsed'},
@@ -188,6 +194,7 @@
 			transparentBackground: true,
             align: 'floating',  //one of 'left', 'right', 'center', 'inline', 'floating'
 			lineAngleTooltip: { enabled: true, color: 'blue',  fontSize: 15},
+            activeColor: '#000000',
             exitOnOutsideClick: false,
         });
 

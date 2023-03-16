@@ -77,6 +77,7 @@
     arrow.set('stroke', this.drawerInstance.activeColor);
     arrow.set('opacity', this.drawerInstance.activeOpacity);
     arrow.set('oneSided', true);
+    arrow.set('fill', this.drawerInstance.activeColor);
 
     this.createAngleTooltip(arrow);
 

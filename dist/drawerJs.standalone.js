@@ -31024,8 +31024,9 @@ DrawerJs.texts = {
       };
 
       ctx.save();
+      this.strokeWidth=15;
 
-      var offsetCenter = Math.floor((this.lineWidth || this.strokeWidth) / 3) || 0;
+      var offsetCenter = Math.floor(((this.lineWidth || 0) ||  (this.strokeWidth || 0)) / 3) || 0;
 
 
       ctx.translate(point.x, point.y);
@@ -31040,6 +31041,7 @@ DrawerJs.texts = {
       ctx.closePath();
       ctx.fillStyle = this.stroke;
       ctx.fill();
+
       this._renderStroke(ctx);
 
       ctx.restore();
@@ -47281,6 +47283,7 @@ CloseButton.prototype._onCloseButtonClick = function() {
     arrow.set('stroke', this.drawerInstance.activeColor);
     arrow.set('opacity', this.drawerInstance.activeOpacity);
     arrow.set('oneSided', true);
+    arrow.set('fill', this.drawerInstance.activeColor);
 
     this.createAngleTooltip(arrow);
 
