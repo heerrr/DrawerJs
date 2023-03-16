@@ -20,10 +20,12 @@
 
 
     initialize: function (points, options) {
+
       this.callSuper('initialize', points, options);
       if (options) {
         this.set('oneSided', options.oneSided);
       }
+
     },
 
 
@@ -36,6 +38,7 @@
     // },
 
     _render: function (ctx, noTransform) {
+
       if (
         (this.width < 20 && this.height < 20) ||
         (this.scaleX < 0.3 && this.scaleY < 0.3)
@@ -59,23 +62,25 @@
     },
 
     _drawArrow: function (ctx, point, angle) {
-      var arrowSize = 0.5;
 
+
+      var arrowSize = 0.5;
+      var strokeWidth = this.get('strokeWidth');
       if(this.get('strokeWidth') > 1){
         arrowSize = arrowSize * (this.get('strokeWidth') / 2);
       }
 
 
-      var arrowPointOffsetX = 10;
-      var arrowPointOffsetY = 20;
+      var arrowPointOffsetX = 15;
+      var arrowPointOffsetY = 0;
 
       var frontCenterPoint = {
         x: point.x,
-        y: point.y + (arrowPointOffsetX * arrowSize)
+        y: point.y,
       };
       var leftPoint = {
         x: point.x - (arrowPointOffsetX * arrowSize),
-        y: point.y - (arrowPointOffsetY * arrowSize)
+        y: point.y - (arrowPointOffsetX * arrowSize)
       };
       var backCenterPoint = {
         x: point.x,
@@ -83,22 +88,27 @@
       };
       var rightPoint = {
         x: point.x + (arrowPointOffsetX * arrowSize),
-        y: point.y - (arrowPointOffsetY * arrowSize)
+        y: point.y - (arrowPointOffsetX * arrowSize)
       };
 
       ctx.save();
+
+      var offsetCenter = Math.floor((this.lineWidth || this.strokeWidth) / 3) || 0;
+
 
       ctx.translate(point.x, point.y);
       ctx.rotate(angle * Math.PI / 180);
       ctx.translate(point.x * -1, point.y * -1);
 
       ctx.beginPath();
-      ctx.moveTo(frontCenterPoint.x, frontCenterPoint.y);
+      ctx.moveTo(frontCenterPoint.x + offsetCenter, frontCenterPoint.y + offsetCenter);
       ctx.lineTo(leftPoint.x, leftPoint.y);
-      ctx.lineTo(backCenterPoint.x, backCenterPoint.y);
+      ctx.moveTo(frontCenterPoint.x - offsetCenter, frontCenterPoint.y + offsetCenter);
       ctx.lineTo(rightPoint.x, rightPoint.y);
+      ctx.closePath();
       ctx.fillStyle = this.stroke;
       ctx.fill();
+      this._renderStroke(ctx);
 
       ctx.restore();
     },
